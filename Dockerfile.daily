@@ -23,7 +23,7 @@ RUN \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
   apt-get install -y python-software-properties && \
-  apt-get install -y git wget curl tree unzip tmux
+  apt-get install -y git wget curl tree unzip tmux vim
 
 # Set environment variables
 ENV HOME /root
@@ -38,8 +38,17 @@ WORKDIR $WORK_DIR
 # Define default command
 CMD ["bash"]
 
+# Install java
+RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" -O - \
+  http://download.oracle.com/otn-pub/java/jdk/8u31-b13/jdk-8u31-linux-x64.tar.gz | tar -zxf - -C /opt && \
+  cd /opt/ && ln -s jdk1.8.0_31 jdk
+
+ENV JAVA_HOME /opt/jdk
+ENV CLASSPATH $JAVA_HOME/lib:.
+ENV PATH $PATH:$JAVA_HOME/bin
+
 # Install erlang
-RUN apt-get -y install libncurses5-dev libssl-dev unixodbc unixodbc-dev
+RUN apt-get install -y libncurses5-dev libssl-dev unixodbc unixodbc-dev
 
 RUN wget -O - http://www.erlang.org/download/otp_src_17.4.tar.gz | tar -xzf - -C /opt && \
   cd /opt/otp_src_17.4 && ./configure && make && make install
@@ -61,3 +70,22 @@ RUN wget -O - https://storage.googleapis.com/golang/go1.4.1.linux-amd64.tar.gz |
 
 ENV GOPATH $WORK_DIR/gocode
 ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
+
+# Install python
+RUN wget -O - https://bootstrap.pypa.io/get-pip.py | python -
+
+# Install ruby
+RUN apt-get install -y libffi-dev
+
+RUN wget -O - http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.0.tar.gz | tar -xzf - -C /opt && \
+  cd /opt/ruby-2.2.0 && ./configure && make && make install
+
+# Install zmq
+RUN apt-get install -y libtool pkg-config build-essential autoconf automake uuid-dev
+
+RUN wget -O - http://download.zeromq.org/zeromq-4.1.0-rc1.tar.gz | tar -xzf - -C /opt && \
+  cd /opt/zeromq-4.1.0 && ./configure && make && make install && ldconfig
+
+# Install rabbitmq
+RUN wget -O - http://www.rabbitmq.com/releases/rabbitmq-server/v3.4.3/rabbitmq-server-generic-unix-3.4.3.tar.gz | tar -xzf - -C /opt
+
