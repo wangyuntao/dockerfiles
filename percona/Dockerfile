@@ -3,6 +3,8 @@
 #
 # http://www.percona.com/doc/percona-server/5.6/installation/apt_repo.html
 #
+# docker run -v `pwd`:/var/lib/mysql wangyuntao/percona mysql_install_db
+#
 
 # Pull base image
 FROM wangyuntao/ubuntu
@@ -32,7 +34,7 @@ RUN \
   rm -f /tmp/config
 
 # Define mountable directories
-VOLUME ["/etc/mysql", "/var/lib/mysql"]
+VOLUME ["/var/lib/mysql"]
 
 # Define default command
 CMD ["mysqld_safe"]
