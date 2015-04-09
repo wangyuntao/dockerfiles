@@ -1,5 +1,7 @@
 #
 # Nginx Dockerfile
+# 
+# docker run -d -it --name nginx -p 80:80 -v `pwd`:/var/www/html wangyuntao/nginx
 #
 
 # Pull base image
