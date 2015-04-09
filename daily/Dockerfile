@@ -22,8 +22,9 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y python-software-properties && \
-  apt-get install -y man wget curl vim unzip tree tmux git subversion
+  apt-get install -y python-software-properties
+
+RUN apt-get install -y man wget curl vim unzip tree tmux git subversion ack-grep
 
 # Set environment variables
 ENV HOME /root
