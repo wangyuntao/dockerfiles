@@ -8,8 +8,10 @@ FROM ubuntu:14.04
 # Maintainer
 MAINTAINER wyt <wyt.daily@gmail.com>
 
-# Set timezone and locale
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# Set timezone
+ENV TZ Asia/Shanghai
+
+# Set locale
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
@@ -24,9 +26,6 @@ RUN \
 
 # Set environment variables
 ENV HOME /root
-
-RUN mkdir $HOME/bin
-ENV PATH $PATH:$HOME/bin
 
 # Define working directory
 WORKDIR $HOME
