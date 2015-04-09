@@ -1,5 +1,7 @@
 #
-#  Ubuntu Dockerfile
+# Ubuntu Dockerfile
+#
+# https://github.com/wangyuntao/dockerfiles
 #
 
 # Pull base image

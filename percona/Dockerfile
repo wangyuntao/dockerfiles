@@ -1,6 +1,8 @@
 #
 # Percona Server Dockerfile
 #
+# https://github.com/wangyuntao/dockerfiles
+#
 
 # Pull base image
 FROM wangyuntao/ubuntu
