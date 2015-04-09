@@ -20,7 +20,6 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y python-software-properties && \
   apt-get install -y man wget curl vim unzip tree tmux git ack-grep
 
 # Set environment variables
