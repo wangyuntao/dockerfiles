@@ -2,6 +2,7 @@
 # Percona Server Dockerfile
 #
 # https://github.com/wangyuntao/dockerfiles
+# http://www.percona.com/doc/percona-server/5.6/installation/apt_repo.html
 #
 
 # Pull base image
