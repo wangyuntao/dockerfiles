@@ -1,8 +1,6 @@
 #
 # Ubuntu Dockerfile
 #
-# https://github.com/wangyuntao/dockerfiles
-#
 
 # Pull base image
 FROM ubuntu:14.04
