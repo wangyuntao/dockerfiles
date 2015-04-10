@@ -8,6 +8,7 @@
 #
 
 FROM wangyuntao/ubuntu
+
 MAINTAINER wyt <wyt.daily@gmail.com>
 
 RUN \
