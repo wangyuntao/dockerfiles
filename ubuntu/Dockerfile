@@ -23,9 +23,3 @@ WORKDIR $HOME
 
 # Set default cmd
 CMD ["bash"]
-
-# Define utils
-ENV CLEAN apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Clean
-RUN $CLEAN
