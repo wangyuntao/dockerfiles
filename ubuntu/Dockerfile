@@ -15,20 +15,14 @@ ENV TZ Asia/Shanghai
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-# Install
-RUN \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-  apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y build-essential && \
-  apt-get install -y software-properties-common && \
-  apt-get install -y man wget curl vim unzip tree tmux git ack-grep
+# Define utils
+ENV CLEAN apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set environment variables
+# Set home
 ENV HOME /root
 
-# Define working directory
+# Set work dir
 WORKDIR $HOME
 
-# Define default command
+# Set default comand
 CMD ["bash"]
