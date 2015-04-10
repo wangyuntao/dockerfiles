@@ -4,23 +4,20 @@
 # docker run -d -it --name nginx -p 80:80 -v `pwd`:/var/www/html wangyuntao/nginx
 #
 
-# Pull base image
 FROM wangyuntao/ubuntu
 
-# Maintainer
 MAINTAINER wyt <wyt.daily@gmail.com>
 
-# Add key
-RUN add-apt-repository ppa:nginx/development
+RUN \
+  apt-get install -y software-properties-common && \
+  add-apt-repository ppa:nginx/development && \
+  apt-get update && \
+  apt-get install -y nginx && \
+  apt-get purge -y software-properties-common && \
+  apt-get autoremove -y && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
 
-# Update local cache
-RUN apt-get update
-
-# Install 
-RUN apt-get install -y nginx
-
-# Expose
 EXPOSE 80 443
 
-# Cmd
 CMD ["nginx", "-g", "daemon off;"]
