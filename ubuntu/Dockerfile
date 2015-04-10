@@ -15,14 +15,17 @@ ENV TZ Asia/Shanghai
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-# Define utils
-ENV CLEAN apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 # Set home
 ENV HOME /root
 
 # Set work dir
 WORKDIR $HOME
 
-# Set default comand
+# Set default cmd
 CMD ["bash"]
+
+# Define utils
+ENV CLEAN apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Clean
+RUN $CLEAN
