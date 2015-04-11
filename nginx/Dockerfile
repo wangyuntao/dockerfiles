@@ -9,6 +9,7 @@ FROM wangyuntao/ubuntu
 MAINTAINER wyt <wyt.daily@gmail.com>
 
 RUN \
+  apt-get update && \
   apt-get install -y software-properties-common && \
   add-apt-repository ppa:nginx/development && \
   apt-get update && \
