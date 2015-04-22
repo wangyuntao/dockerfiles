@@ -12,8 +12,8 @@ ENV DOCKER_DIR $HOME/docker
 ENV PATH $PATH:$DOCKER_DIR/bin
 ENV PATH $PATH:$DOCKER_DIR/maven/apache-maven-3.2.5/bin
 
-wget -O - 
-  https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz | \
+RUN \
+  wget -O - https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz | \
   tar -zxf - -C /opt && \
   cd /opt/protobuf-2.6.1 && \
   ./configure && make && make install
