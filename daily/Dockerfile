@@ -13,12 +13,13 @@ ENV PATH $PATH:$DOCKER_DIR/bin
 ENV PATH $PATH:$DOCKER_DIR/maven/apache-maven-3.2.5/bin
 
 RUN \
-  wget -O - https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz | \
+  wget -O - \
+  https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz | \
   tar -zxf - -C /opt && \
   cd /opt/protobuf-2.6.1 && \
-  ./configure && \
-  make && \
-  make install
+  ./configure && make && make install
+
+ENV LD_LIBRARY_PATH /usr/local/lib
 
 WORKDIR $HOME
 CMD ["bash"]
