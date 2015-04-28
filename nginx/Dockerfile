@@ -5,7 +5,6 @@
 #
 
 FROM wangyuntao/ubuntu
-
 MAINTAINER wyt <wyt.daily@gmail.com>
 
 RUN \
@@ -18,6 +17,9 @@ RUN \
   apt-get autoremove -y && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
+
+RUN \
+  sed -e '/http {/a\\t# Add By Dockerfile\n\tautoindex on;' /etc/nginx/nginx.conf
 
 EXPOSE 80 443
 
