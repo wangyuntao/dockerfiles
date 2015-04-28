@@ -19,7 +19,7 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 RUN \
-  sed -e '/http {/a\\t# Add By Dockerfile\n\tautoindex on;' /etc/nginx/nginx.conf
+  sed -i '/http {/a\\t# Add By Dockerfile\n\tautoindex on;' /etc/nginx/nginx.conf
 
 EXPOSE 80 443
 
