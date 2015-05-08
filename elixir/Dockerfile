@@ -1,4 +1,4 @@
-FROM wangyuntao/development
+FROM wangyuntao/dev
 MAINTAINER wyt <wyt.daily@gmail.com>
 
 RUN \
