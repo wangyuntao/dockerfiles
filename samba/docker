@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+cd `dirname $0`
+cdir=`pwd`
+
+PORT1=139
+PORT2=445
+
+container="samba"
+image="wangyuntao/$container"
+args="--name $container \
+    -p $PORT1:139 \
+    -p $PORT2:445 \
+    -v $cdir/etc/samba/smb.conf:/etc/samba/smb.conf \
+    -v $cdir/etc/samba/smbpasswd:/etc/samba/smbpasswd \
+    -v $cdir/etc/samba/smbusers:/etc/samba/smbusers \
+    -v $cdir/var/log/samba:/var/log/samba \
+    -v $cdir/data:/data \
+"
+
+case $1 in
+    run)
+        docker run --rm $args -it $image /bin/bash;;
+    daemon)
+        docker run -d $args $image;;
+    stop)
+        docker stop $container && docker rm $container;;
+    *)
+        echo "usage: ./docker CMD"
+esac
