@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [ "$1" = 'mysqld' ]; then
+if [ "$1" = 'mysqld_safe' ]; then
 	DATADIR="$("$@" --verbose --help 2>/dev/null | awk '$1 == "datadir" { print $2; exit }')"
 
 	if [ ! -d "$DATADIR/mysql" ]; then
