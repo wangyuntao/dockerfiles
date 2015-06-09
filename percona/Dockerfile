@@ -24,5 +24,5 @@ ENV DOCKER_DIR /docker
 COPY entrypoint.sh $DOCKER_DIR/
 RUN chmod +x $DOCKER_DIR/entrypoint.sh
 
-ENTRYPOINT ["/docker/entrypoint.sh"]
+ENTRYPOINT exec $DOCKER_DIR/entrypoint.sh
 CMD ["mysqld"]
