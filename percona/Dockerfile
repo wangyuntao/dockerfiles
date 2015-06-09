@@ -3,9 +3,7 @@
 #
 # http://www.percona.com/doc/percona-server/5.6/installation/apt_repo.html
 #
-# docker run -v `pwd`:/var/lib/mysql wangyuntao/percona mysql_install_db
-# docker run -d -it --name mysql -v `pwd`:/var/lib/mysql wangyuntao/percona
-# docker exec mysql mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
+# docker run -d --name mysql -v `pwd`:/var/lib/mysql -e DB=testdb wangyuntao/percona
 # docker run -it --link mysql:db wangyuntao/percona /bin/bash
 #
 
@@ -15,11 +13,13 @@ MAINTAINER wyt <wyt.daily@gmail.com>
 RUN \
   apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A && \
   echo "deb http://repo.percona.com/apt `lsb_release -cs` main" > /etc/apt/sources.list.d/percona.list && \
-  echo "deb-src http://repo.percona.com/apt `lsb_release -cs` main" >> /etc/apt/sources.list.d/percona.list && \
   apt-get update && \
   apt-get install -y percona-server-server-5.6 percona-server-client-5.6 && \
-  sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
+  sed -ri 's/^(bind-address\s+=\s127.0.0.1)/# \1/' /etc/mysql/my.cnf
 
 VOLUME ["/var/lib/mysql"]
 EXPOSE 3306
+
+COPY docker/ /docker/
+ENTRYPOINT ["/docker/entrypoint.sh"]
 CMD ["mysqld_safe"]
