@@ -6,7 +6,7 @@ if [ "$1" = 'mysqld' ]; then
 
 	if [ ! -d "$DATADIR/mysql" ]; then
 		mysql_install_db --datadir="$DATADIR"
-		mysqlInitFile='/docker/mysql-init-file.sql'
+		mysqlInitFile="/$DOCKER_DIR/mysql-init-file.sql"
 		
 		if [ ! -f "$mysqlInitFile" ]; then
 			cat > "$mysqlInitFile" <<-EOF
