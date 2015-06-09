@@ -6,16 +6,17 @@ if [ "$1" = 'mysqld' ]; then
 
 	if [ ! -d "$DATADIR/mysql" ]; then
 		mysql_install_db --datadir="$DATADIR"
-			
 		mysqlInitFile='/docker/mysql-init-file.sql'
-		cat > "$mysqlInitFile" <<-EOF
-			GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
-		EOF
 		
-		if [ "$DB" ]; then
-			echo "CREATE DATABASE IF NOT EXISTS \`$DB\` ;" >> "$mysqlInitFile"
+		if [ ! -f "$mysqlInitFile" ]; then
+			cat > "$mysqlInitFile" <<-EOF
+				GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+			EOF
+			
+			if [ "$MYSQL_DATABASE" ]; then
+				echo "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\` ;" >> "$mysqlInitFile"
+			fi
 		fi
-
 		set -- "$@" --init-file="$mysqlInitFile"
 	fi
 
