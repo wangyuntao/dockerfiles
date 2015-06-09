@@ -20,6 +20,7 @@ RUN \
   apt-get install -y percona-server-server-5.6 percona-server-client-5.6 && \
   sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
 
+
 VOLUME ["/var/lib/mysql"]
 EXPOSE 3306
 CMD ["mysqld_safe"]
