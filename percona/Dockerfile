@@ -20,7 +20,7 @@ RUN \
 VOLUME ["/var/lib/mysql"]
 EXPOSE 3306
 
-DOCKER_DIR /docker
+ENV DOCKER_DIR /docker
 COPY entrypoint.sh $DOCKER_DIR/
 RUN chmod +x $DOCKER_DIR/entrypoint.sh
 
