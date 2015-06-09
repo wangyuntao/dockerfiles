@@ -24,4 +24,4 @@ COPY entrypoint.sh /docker/
 RUN chmod +x /docker/entrypoint.sh
 
 ENTRYPOINT ["/docker/entrypoint.sh"]
-CMD ["mysqld_safe"]
+CMD ["mysqld"]
