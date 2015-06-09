@@ -14,7 +14,7 @@ if [ "$1" = 'mysqld' ]; then
 			EOF
 			
 			if [ "$MYSQL_DATABASE" ]; then
-				echo "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\` ;" >> "$mysqlInitFile"
+				echo "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;" >> "$mysqlInitFile"
 			fi
 		fi
 		set -- "$@" --init-file="$mysqlInitFile"
