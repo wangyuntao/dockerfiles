@@ -3,7 +3,7 @@
 #
 # http://www.percona.com/doc/percona-server/5.6/installation/apt_repo.html
 #
-# docker run -d --name mysql -v `pwd`:/var/lib/mysql -e DB=testdb wangyuntao/percona
+# docker run -d --name mysql -v `pwd`:/var/lib/mysql -e MYSQL_DATABASE=testdb wangyuntao/percona
 # docker run -it --link mysql:db wangyuntao/percona /bin/bash
 #
 
