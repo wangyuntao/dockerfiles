@@ -9,23 +9,17 @@
 # docker run -it --link mysql:db wangyuntao/percona /bin/bash
 #
 
-FROM wangyuntao/ubuntu
-
+FROM wangyuntao/dev
 MAINTAINER wyt <wyt.daily@gmail.com>
 
 RUN \
   apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A && \
   echo "deb http://repo.percona.com/apt `lsb_release -cs` main" > /etc/apt/sources.list.d/percona.list && \
+  echo "deb-src http://repo.percona.com/apt `lsb_release -cs` main" >> /etc/apt/sources.list.d/percona.list && \
   apt-get update && \
-  apt-get install -y percona-server-server-5.6 && \
-  sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+  apt-get install -y percona-server-server-5.6 percona-server-client-5.6 && \
+  sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
 
 VOLUME ["/var/lib/mysql"]
-
 EXPOSE 3306
-
 CMD ["mysqld_safe"]
-
-

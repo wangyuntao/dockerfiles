@@ -9,9 +9,6 @@ RUN \
   apt-get install -y htop iftop sysstat dstat && \
   cd /opt && git clone git://github.com/kongjian/tsar.git && cd tsar && make && make install
 
-RUN mkdir $HOME/bin
-ENV PATH $PATH:$HOME/bin
-
 ENV DOCKER_DIR $HOME/docker
 ENV PATH $PATH:$DOCKER_DIR/bin
 
