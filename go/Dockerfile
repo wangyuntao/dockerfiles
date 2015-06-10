@@ -7,4 +7,5 @@ RUN \
 ENV GOPATH $DEV_DIR/gocode
 ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
 
+WORKDIR $DEV_DIR/gocode
 CMD ["bash"]

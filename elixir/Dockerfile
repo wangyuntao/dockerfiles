@@ -13,4 +13,5 @@ RUN \
   apt-get install -y nodejs && \
   apt-get install -y inotify-tools
 
+WORKDIR $DEV_DIR/elixircode
 CMD ["bash"]
