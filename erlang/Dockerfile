@@ -8,9 +8,9 @@ RUN \
   apt-get update && \
   apt-get install -y erlang
 
-ENV ERL_CODE $DEV_DIR/erlangcode
+ENV ERL_CODE $DEV_DIR/code/erlang
 ENV ERL_LIBS $ERL_CODE/deps:$ERL_CODE/plugins:$ERL_CODE
 ENV PATH $PATH:$ERL_CODE/bin
 
-WORKDIR $DEV_DIR/erlangcode
+WORKDIR $DEV_DIR/code/erlang
 CMD ["bash"]
