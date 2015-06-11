@@ -17,6 +17,7 @@ RUN \
 
 ENV DEV_DIR /mnt/docker
 ENV PATH $PATH:$DEV_DIR/bin
+RUN echo '. $DEV_DIR/bin/init' >> $HOME/.bashrc
 
 WORKDIR $DEV_DIR
 CMD ["bash"]
