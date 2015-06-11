@@ -17,7 +17,7 @@ RUN \
 
 ENV DEV_DIR /mnt/docker
 ENV PATH $PATH:$DEV_DIR/bin
-RUN echo -e '\n# Add By Dockerfile\n. $DEV_DIR/bin/init' >> $HOME/.bashrc
+RUN echo '\n# Add By Dockerfile\n. $DEV_DIR/bin/init' >> $HOME/.bashrc
 
 WORKDIR $DEV_DIR
 CMD ["bash"]
