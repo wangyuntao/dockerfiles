@@ -6,7 +6,7 @@ RUN \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
   apt-get install -y ack-grep curl git man telnet tmux tree unzip vim wget && \
-  apt-get install -y htop iftop sysstat dstat
+  apt-get install -y htop iftop sysstat dstat iperf
 
 RUN \
   cd /opt && \
