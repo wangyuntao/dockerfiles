@@ -13,4 +13,3 @@ ENV ERL_LIBS $ERL_CODE/deps:$ERL_CODE/plugins:$ERL_CODE
 ENV PATH $PATH:$ERL_CODE/bin
 
 WORKDIR $DEV_DIR/code/erlang
-CMD ["bash"]

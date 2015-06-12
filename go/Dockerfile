@@ -8,4 +8,3 @@ ENV GOPATH $DEV_DIR/code/go
 ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
 
 WORKDIR $DEV_DIR/code/go
-CMD ["bash"]

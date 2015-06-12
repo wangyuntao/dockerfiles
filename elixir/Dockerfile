@@ -14,4 +14,3 @@ RUN \
   apt-get install -y inotify-tools
 
 WORKDIR $DEV_DIR/code/elixir
-CMD ["bash"]

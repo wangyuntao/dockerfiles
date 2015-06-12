@@ -9,7 +9,7 @@ ENV JAVA_HOME /opt/jdk1.7.0_80
 ENV CLASSPATH $JAVA_HOME/lib:.
 ENV PATH $PATH:$JAVA_HOME/bin
 
-ENV PATH $PATH:$DEV_DIR/maven/apache-maven-3.2.5/bin
+ENV PATH $PATH:$DEV_DIR/opt/apache-maven-3.2.5/bin
 
 RUN \
   wget -O - \
@@ -21,4 +21,3 @@ RUN \
 ENV LD_LIBRARY_PATH /usr/local/lib
 
 WORKDIR $DEV_DIR/code/java
-CMD ["bash"]
