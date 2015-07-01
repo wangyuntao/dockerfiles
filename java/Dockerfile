@@ -17,6 +17,10 @@ RUN \
   cd /opt/protobuf-2.6.1 && \
   ./configure && make && make install
 
+RUN \
+  wget -O /usr/local/lib/hsdis-amd64.so \
+  https://kenai.com/projects/base-hsdis/downloads/download/linux-hsdis-amd64.so
+
 ENV LD_LIBRARY_PATH /usr/local/lib
 
 WORKDIR $DEV_DIR/code/java
